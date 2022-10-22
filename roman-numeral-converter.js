@@ -1,4 +1,4 @@
-function con(charNum, map) {
+function romanNumberFormatter(charNum, map) {
   if (charNum === "0") {
     return "";
   }
@@ -31,59 +31,59 @@ function con(charNum, map) {
   }
 }
 
-function convert(charNum, index) {
-if (index === 0) {
-const map = {
-  one: "I",
-  five: "V",
-  ten: "X"
-}
- return con(charNum, map);
-}
-
-if (index === 1) {
-  const map = {
-    one: "X",
-    five: "L",
-    ten: "C"
+function formatterMapper(charNum, index) {
+  if (index === 0) {
+    const map = {
+      one: "I",
+      five: "V",
+      ten: "X",
+    };
+    return romanNumberFormatter(charNum, map);
   }
-  return con(charNum, map);
-}
 
-if (index === 2) {
-  const map = {
-    one: "C",
-    five: "D",
-    ten: "M"
+  if (index === 1) {
+    const map = {
+      one: "X",
+      five: "L",
+      ten: "C",
+    };
+    return romanNumberFormatter(charNum, map);
   }
-  return con(charNum, map);
-}
 
-if (index === 3) {
-  const map = {
-    one: "M",
-    five: "",
-    ten: ""
+  if (index === 2) {
+    const map = {
+      one: "C",
+      five: "D",
+      ten: "M",
+    };
+    return romanNumberFormatter(charNum, map);
   }
-  return con(charNum, map);
-}
+
+  if (index === 3) {
+    const map = {
+      one: "M",
+      five: "",
+      ten: "",
+    };
+    return romanNumberFormatter(charNum, map);
+  }
 }
 
 function convertToRoman(num) {
-let str = num.toString();
+  let str = num.toString();
 
-function reverseString(str) {
+  function reverseString(str) {
     return str.split("").reverse().join("");
-}
-let reverse = reverseString(str);
+  }
+  let reverse = reverseString(str);
 
-let arr = [];
+  let arr = [];
 
-for (let i = 0; i < reverse.length; i++) {
- let charStr = reverse[i];
- let numb = convert(charStr, i);
- arr.unshift(numb);
-}
+  for (let i = 0; i < reverse.length; i++) {
+    let charStr = reverse[i];
+    let numb = formatterMapper(charStr, i);
+    arr.unshift(numb);
+  }
 
-return arr.join('');
+  return arr.join("");
 }
